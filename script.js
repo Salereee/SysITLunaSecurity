@@ -6,6 +6,8 @@ const revealItems = document.querySelectorAll('.reveal');
 const productButtons = document.querySelectorAll('.product-wa');
 const heroRevealItems = document.querySelectorAll('.hero .reveal');
 const menuBreakpoint = 900;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hasGsap = typeof window.gsap !== 'undefined';
 
 const whatsappBase = 'https://wa.me/5216643028600?text=';
 
@@ -90,15 +92,10 @@ function applyRevealStagger() {
     const parentSection = item.closest('section, footer') || document.body;
     const sectionKey = parentSection.id || parentSection.className || 'global';
     const current = sectionCounter.get(sectionKey) || 0;
-    const delay = Math.min(current, 7) * 160;
-    item.style.setProperty('--reveal-delay', `${delay}ms`);
+    const delay = Math.min(current, 7) * 0.16;
+    item.dataset.revealDelay = `${delay}`;
     sectionCounter.set(sectionKey, current + 1);
   });
-}
-
-function revealIfInViewport(item, ratio = 0.62) {
-  const rect = item.getBoundingClientRect();
-  return rect.top < window.innerHeight * ratio && rect.bottom > 0;
 }
 
 function applyRevealVariants() {
@@ -144,13 +141,6 @@ function getRevealOffset(item) {
   return { x: 0, y: 60, scale: 0.93 };
 }
 
-function prepReveal(item) {
-  const offset = getRevealOffset(item);
-  item.style.opacity = '0.001';
-  item.style.filter = 'blur(4px)';
-  item.style.transform = `translate3d(${offset.x}px, ${offset.y}px, 0) scale(${offset.scale})`;
-}
-
 function animateReveal(item, delay = 0) {
   if (item.dataset.animated === '1') {
     return;
@@ -159,49 +149,98 @@ function animateReveal(item, delay = 0) {
   item.dataset.animated = '1';
   const offset = getRevealOffset(item);
 
-  if (typeof item.animate === 'function') {
-    item.animate(
-      [
-        {
-          opacity: 0.001,
-          filter: 'blur(4px)',
-          transform: `translate3d(${offset.x}px, ${offset.y}px, 0) scale(${offset.scale})`,
-        },
-        {
-          opacity: 1,
-          filter: 'blur(0px)',
-          transform: 'translate3d(0, 0, 0) scale(1)',
-        },
-      ],
-      {
-        duration: 1200,
-        delay,
-        easing: 'cubic-bezier(0.12, 0.82, 0.24, 1)',
-        fill: 'forwards',
-      }
-    );
-  }
-
-  window.setTimeout(() => {
+  if (!hasGsap || prefersReducedMotion) {
     item.classList.add('is-visible');
     item.style.opacity = '1';
     item.style.filter = 'blur(0)';
     item.style.transform = 'translate3d(0, 0, 0) scale(1)';
-  }, delay + 16);
+    return;
+  }
+
+  window.gsap.fromTo(
+    item,
+    {
+      opacity: 0.001,
+      filter: 'blur(4px)',
+      x: offset.x,
+      y: offset.y,
+      scale: offset.scale,
+    },
+    {
+      opacity: 1,
+      filter: 'blur(0px)',
+      x: 0,
+      y: 0,
+      scale: 1,
+      duration: 1.05,
+      delay,
+      ease: 'expo.out',
+      onComplete: () => {
+        item.classList.add('is-visible');
+      },
+    }
+  );
 }
 
-function initInteractiveFeedback() {
-  const interactiveItems = document.querySelectorAll('.btn, .fab, .menu a, .service-card, .product-card, .point-card');
+function initGsapMicroInteractions() {
+  if (!hasGsap || prefersReducedMotion) {
+    return;
+  }
 
-  interactiveItems.forEach((item) => {
-    item.addEventListener('pointerdown', () => {
-      item.classList.add('is-pressed');
-    });
+  const hoverTargets = document.querySelectorAll('.btn, .service-card, .product-card, .point-card');
+  const buttonTargets = document.querySelectorAll('.btn');
 
-    const clearPress = () => item.classList.remove('is-pressed');
-    item.addEventListener('pointerup', clearPress);
-    item.addEventListener('pointerleave', clearPress);
-    item.addEventListener('blur', clearPress);
+  hoverTargets.forEach((item) => {
+    window.gsap.set(item, { transformOrigin: 'center center' });
+
+    const hoverIn = () => {
+      window.gsap.to(item, {
+        y: -4,
+        scale: 1.02,
+        duration: 0.25,
+        ease: 'power3.out',
+        overwrite: 'auto',
+      });
+    };
+
+    const hoverOut = () => {
+      window.gsap.to(item, {
+        y: 0,
+        scale: 1,
+        duration: 0.3,
+        ease: 'power3.out',
+        overwrite: 'auto',
+      });
+    };
+
+    item.addEventListener('pointerenter', hoverIn);
+    item.addEventListener('pointerleave', hoverOut);
+    item.addEventListener('focus', hoverIn);
+    item.addEventListener('blur', hoverOut);
+  });
+
+  buttonTargets.forEach((button) => {
+    const pressIn = () => {
+      window.gsap.to(button, {
+        scale: 0.98,
+        duration: 0.12,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+    };
+
+    const pressOut = () => {
+      window.gsap.to(button, {
+        scale: 1,
+        duration: 0.18,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+    };
+
+    button.addEventListener('pointerdown', pressIn);
+    button.addEventListener('pointerup', pressOut);
+    button.addEventListener('pointerleave', pressOut);
   });
 }
 
@@ -210,21 +249,49 @@ function initRevealAnimations() {
     return;
   }
 
-  document.documentElement.classList.add('js-reveal');
+  if (prefersReducedMotion) {
+    revealItems.forEach((item) => {
+      item.classList.add('is-visible');
+      item.style.opacity = '1';
+      item.style.filter = 'blur(0)';
+      item.style.transform = 'translate3d(0, 0, 0) scale(1)';
+    });
+    return;
+  }
+
+  if (!hasGsap) {
+    revealItems.forEach((item) => {
+      item.classList.add('is-visible');
+      item.style.opacity = '1';
+      item.style.filter = 'blur(0)';
+      item.style.transform = 'translate3d(0, 0, 0) scale(1)';
+    });
+    return;
+  }
+
   applyRevealVariants();
   applyRevealStagger();
 
-  revealItems.forEach((item) => prepReveal(item));
+  revealItems.forEach((item) => {
+    const offset = getRevealOffset(item);
+    window.gsap.set(item, {
+      opacity: 0.001,
+      filter: 'blur(4px)',
+      x: offset.x,
+      y: offset.y,
+      scale: offset.scale,
+    });
+  });
 
   // Entrada inicial del hero para dar impacto sin depender del scroll.
   heroRevealItems.forEach((item, index) => {
-    const delay = 250 + index * 260;
+    const delay = 0.25 + index * 0.26;
     animateReveal(item, delay);
   });
 
   if (!('IntersectionObserver' in window)) {
     revealItems.forEach((item, index) => {
-      animateReveal(item, index * 120);
+      animateReveal(item, index * 0.12);
     });
     return;
   }
@@ -233,7 +300,7 @@ function initRevealAnimations() {
     (entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const delay = Number.parseInt(entry.target.style.getPropertyValue('--reveal-delay') || '0', 10) || 0;
+          const delay = Number.parseFloat(entry.target.dataset.revealDelay || '0') || 0;
           animateReveal(entry.target, delay);
           obs.unobserve(entry.target);
         }
@@ -247,12 +314,6 @@ function initRevealAnimations() {
 
   revealItems.forEach((item) => {
     if (item.dataset.animated === '1') {
-      return;
-    }
-
-    if (revealIfInViewport(item)) {
-      const delay = Number.parseInt(item.style.getPropertyValue('--reveal-delay') || '0', 10) || 0;
-      animateReveal(item, delay + 120);
       return;
     }
 
@@ -462,7 +523,7 @@ function bootstrapUI() {
 
   requestAnimationFrame(() => {
     initRevealAnimations();
-    initInteractiveFeedback();
+    initGsapMicroInteractions();
     initImageCarouselWithRetry();
   });
 }
