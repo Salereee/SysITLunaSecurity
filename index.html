@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="SysIT: Soluciones de seguridad electrónica e infraestructura tecnológica para hogares, negocios y empresas."
+        />
+        <title>SysIT Luna Security</title>
+        <script>
+            document.documentElement.classList.add("js");
+            // Si el motor de movimiento no llega a arrancar (script o CDN caidos),
+            // quitamos el estado oculto para que el contenido siempre se vea.
+            window.setTimeout(function () {
+                var root = document.documentElement;
+                if (!root.classList.contains("motion-ready")) {
+                    root.classList.add("motion-off");
+                }
+            }, 3500);
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css?v=20260814-1" />
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="LogoColorTransparente.ico"
+        />
+    </head>
+    <body>
+        <div class="page-bg" aria-hidden="true"></div>
+        <div class="bg-blobs" aria-hidden="true">
+            <span class="blob blob-1"></span>
+            <span class="blob blob-2"></span>
+            <span class="blob blob-3"></span>
+            <span class="blob blob-4"></span>
+            <span class="blob blob-5"></span>
+        </div>
+
+        <header class="header" id="top">
+            <nav class="navbar container" aria-label="Navegación principal">
+                <a href="#inicio" class="brand" aria-label="Ir al inicio">
+                    <!-- REEMPLAZAR: cambia el archivo del logo si quieres usar otra version -->
+                    <img
+                        src="LogoColorTransparente.png"
+                        alt="Logo SysIT"
+                        class="brand-logo"
+                    />
+                    <span class="brand-text">SysIT Luna Security</span>
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Abrir menu"
+                    aria-expanded="false"
+                    aria-controls="mainMenu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="menu" id="mainMenu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios-destacados">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#afiliados">Aliados</a></li>
+                    <li><a href="#tienda">Tienda</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="scroll-progress" aria-hidden="true">
+                <span data-scroll-progress></span>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero section" id="inicio">
+                <div class="container hero-grid" data-hero-parallax>
+                    <div class="hero-copy">
+                        <p class="eyebrow reveal">
+                            <span class="eyebrow-rule" aria-hidden="true"></span>
+                            Seguridad Electrónica Inteligente
+                        </p>
+                        <!-- REEMPLAZAR: titulo principal de la propuesta de valor -->
+                        <h1 data-split>
+                            Infraestructura tecnológica y protección integral
+                            para tu operación.
+                        </h1>
+                        <!-- REEMPLAZAR: subtitulo descriptivo de tu servicio -->
+                        <p class="hero-text reveal">
+                            En SysIT diseñamos, instalamos y damos soporte a
+                            soluciones de videovigilancia, monitoreo y control
+                            de acceso con enfoque profesional, escalable y
+                            confiable.
+                        </p>
+                        <div class="hero-actions reveal">
+                            <a
+                                class="btn btn-primary"
+                                href="https://wa.me/5216643028600?text=Hola%2C%20quiero%20cotizar%20una%20solucion%20de%20seguridad%20con%20SysIT."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Cotizar ahora</a
+                            >
+                            <a
+                                class="btn btn-outline"
+                                href="#servicios-destacados"
+                                >Ver servicios</a
+                            >
+                        </div>
+                    </div>
+
+                    <div class="hero-visual reveal" aria-hidden="true">
+                        <div class="orb orb-a"></div>
+                        <div class="orb orb-b"></div>
+                        <div class="tech-card card-camera">
+                            <span class="tech-dot"></span>
+                            <h3>Monitoreo 24/7</h3>
+                            <p>Visión en tiempo real y registros seguros.</p>
+                        </div>
+                        <div class="tech-card card-network">
+                            <span class="tech-dot"></span>
+                            <h3>Red protegida</h3>
+                            <p>
+                                Conectividad estable para dispositivos críticos.
+                            </p>
+                        </div>
+                        <div class="tech-ring"></div>
+                        <div class="tech-ring tech-ring-inner"></div>
+                    </div>
+                </div>
+
+                <a class="scroll-cue" href="#servicios-destacados">
+                    <span class="scroll-cue-label">Desliza</span>
+                    <span class="scroll-cue-line" aria-hidden="true"></span>
+                </a>
+            </section>
+
+            <section
+                class="services-carousel section"
+                id="servicios-destacados"
+            >
+                <div class="container">
+                    <div class="section-marker" data-marker>
+                        <span class="marker-num">01</span>
+                        <span class="marker-rule" aria-hidden="true"></span>
+                        <span class="marker-label">Servicios Destacados</span>
+                    </div>
+
+                    <div class="section-head section-head-wide">
+                        <h2 data-split>
+                            Soluciones instaladas por nuestro equipo en campo.
+                        </h2>
+                        <p class="reveal">
+                            Recorre algunos ejemplos visuales de proyectos y
+                            tipos de servicio que implementamos.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bleed">
+                    <div
+                        class="carousel reveal"
+                        data-carousel
+                        aria-label="Carrusel de servicios destacados"
+                    >
+                        <div class="carousel-track" data-carousel-track>
+                            <article
+                                class="carousel-slide is-active"
+                                data-carousel-slide
+                                aria-hidden="false"
+                            >
+                                <div class="carousel-media" data-parallax="9">
+                                    <img
+                                        class="carousel-image"
+                                        src="1.jpg"
+                                        alt="Instalación profesional de cámaras de seguridad"
+                                        fetchpriority="high"
+                                    />
+                                </div>
+                                <div
+                                    class="carousel-overlay"
+                                    aria-hidden="true"
+                                ></div>
+                                <div class="carousel-content">
+                                    <span class="carousel-index">01 / 04</span>
+                                    <h3>Cámaras de seguridad</h3>
+                                    <p>
+                                        Videovigilancia de alta definición con
+                                        acceso remoto y almacenamiento
+                                        inteligente.
+                                    </p>
+                                </div>
+                            </article>
+
+                            <article
+                                class="carousel-slide"
+                                data-carousel-slide
+                                aria-hidden="true"
+                            >
+                                <div class="carousel-media" data-parallax="9">
+                                    <img
+                                        class="carousel-image"
+                                        src="2.jpg"
+                                        alt="Técnico configurando sistema de alarmas y sensores"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div
+                                    class="carousel-overlay"
+                                    aria-hidden="true"
+                                ></div>
+                                <div class="carousel-content">
+                                    <span class="carousel-index">02 / 04</span>
+                                    <h3>Alarmas</h3>
+                                    <p>
+                                        Sistemas de detección y alerta para
+                                        intrusiones, aperturas y eventos
+                                        críticos.
+                                    </p>
+                                </div>
+                            </article>
+
+                            <article
+                                class="carousel-slide"
+                                data-carousel-slide
+                                aria-hidden="true"
+                            >
+                                <div class="carousel-media" data-parallax="9">
+                                    <img
+                                        class="carousel-image"
+                                        src="4.jpg"
+                                        alt="Instalación de cableado estructurado y red de datos"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div
+                                    class="carousel-overlay"
+                                    aria-hidden="true"
+                                ></div>
+                                <div class="carousel-content">
+                                    <span class="carousel-index">03 / 04</span>
+                                    <h3>Videoportero</h3>
+                                    <p>
+                                        Control visual de accesos con audio
+                                        bidireccional y apertura remota segura.
+                                    </p>
+                                </div>
+                            </article>
+
+                            <article
+                                class="carousel-slide"
+                                data-carousel-slide
+                                aria-hidden="true"
+                            >
+                                <div class="carousel-media" data-parallax="9">
+                                    <img
+                                        class="carousel-image"
+                                        src="3.jpg"
+                                        alt="Sistema de control de acceso en puerta principal"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div
+                                    class="carousel-overlay"
+                                    aria-hidden="true"
+                                ></div>
+                                <div class="carousel-content">
+                                    <span class="carousel-index">04 / 04</span>
+                                    <h3>Cableado estructurado</h3>
+                                    <p>
+                                        Infraestructura ordenada y escalable
+                                        para voz, datos y dispositivos de
+                                        seguridad.
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <button
+                            class="carousel-nav carousel-prev"
+                            type="button"
+                            data-carousel-prev
+                            aria-label="Slide anterior"
+                        >
+                            ‹
+                        </button>
+                        <button
+                            class="carousel-nav carousel-next"
+                            type="button"
+                            data-carousel-next
+                            aria-label="Slide siguiente"
+                        >
+                            ›
+                        </button>
+                        <div
+                            class="carousel-dots"
+                            data-carousel-dots
+                            aria-label="Navegación de diapositivas"
+                        ></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about section" id="nosotros">
+                <div class="container">
+                    <div class="section-marker" data-marker>
+                        <span class="marker-num">02</span>
+                        <span class="marker-rule" aria-hidden="true"></span>
+                        <span class="marker-label">Sobre Nosotros</span>
+                    </div>
+
+                    <div class="split-layout">
+                        <div class="split-aside">
+                            <div class="split-sticky">
+                                <h2 data-split>
+                                    Experiencia técnica para proteger lo que más
+                                    importa.
+                                </h2>
+                                <p class="lede reveal">
+                                    SysIT es una empresa especializada en
+                                    seguridad electrónica y soluciones
+                                    tecnológicas. Nuestro compromiso es brindar
+                                    instalaciones de alta calidad, asesoría
+                                    cercana y proyectos hechos a la medida para
+                                    hogares, negocios y empresas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-points" data-stagger>
+                            <article class="point-card reveal">
+                                <span class="point-index">01</span>
+                                <div class="point-body">
+                                    <h3>Atención profesional</h3>
+                                    <p>
+                                        Diagnóstico preciso, comunicación clara
+                                        y seguimiento en cada etapa del
+                                        proyecto.
+                                    </p>
+                                </div>
+                            </article>
+                            <article class="point-card reveal">
+                                <span class="point-index">02</span>
+                                <div class="point-body">
+                                    <h3>Soluciones a la medida</h3>
+                                    <p>
+                                        Integramos tecnología según tus
+                                        necesidades reales de operación y
+                                        riesgo.
+                                    </p>
+                                </div>
+                            </article>
+                            <article class="point-card reveal">
+                                <span class="point-index">03</span>
+                                <div class="point-body">
+                                    <h3>Tecnología confiable</h3>
+                                    <p>
+                                        Equipos de calidad y configuración
+                                        segura para un desempeño estable.
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="affiliates section" id="afiliados">
+                <div class="container">
+                    <div class="section-marker" data-marker>
+                        <span class="marker-num">03</span>
+                        <span class="marker-rule" aria-hidden="true"></span>
+                        <span class="marker-label">Nuestros aliados</span>
+                    </div>
+
+                    <div class="affiliates-layout">
+                        <div class="affiliates-head">
+                            <h2 data-split>
+                                Empresas con las que hemos trabajado.
+                            </h2>
+                            <p class="lede reveal">
+                                Trabajamos con marcas y empresas especializadas
+                                que respaldan la calidad de nuestras soluciones,
+                                apoyan nuestras instalaciones y garantizan el
+                                soporte de los productos que ofrecemos a
+                                nuestros clientes.
+                            </p>
+                        </div>
+
+                        <figure class="affiliates-media reveal">
+                            <img
+                                src="Afiliados.jpg"
+                                alt="Logos de empresas afiliadas de SysIT"
+                                class="affiliates-image"
+                            />
+                        </figure>
+
+                        <div class="services-grid affiliates-cards" data-stagger>
+                            <article class="service-card reveal">
+                                <span class="service-tag">Videovigilancia</span>
+                                <h3>Hikvision</h3>
+                                <p>
+                                    Proveedor líder mundial de productos y
+                                    soluciones de videovigilancia innovadoras.
+                                    Trabajamos juntos para ofrecer tecnología de
+                                    punta en seguridad.
+                                </p>
+                            </article>
+
+                            <article class="service-card reveal">
+                                <span class="service-tag">Monitoreo</span>
+                                <h3>Dahua Technology</h3>
+                                <p>
+                                    Fabricante y proveedor de soluciones de
+                                    videovigilancia con quien colaboramos para
+                                    implementar sistemas de monitoreo
+                                    inteligentes.
+                                </p>
+                            </article>
+
+                            <article class="service-card reveal">
+                                <span class="service-tag">Control de acceso</span>
+                                <h3>ZKTeco</h3>
+                                <p>
+                                    Especialistas en sistemas de control de
+                                    acceso y asistencia biométrica. Una alianza
+                                    que nos permite ofrecer soluciones de
+                                    seguridad avanzadas.
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta section store" id="tienda">
+                <div class="container">
+                    <div class="section-marker" data-marker>
+                        <span class="marker-num">04</span>
+                        <span class="marker-rule" aria-hidden="true"></span>
+                        <span class="marker-label">Tienda</span>
+                    </div>
+
+                    <div class="cta-box store-box reveal">
+                        <h2 data-split>
+                            Tecnología de seguridad a tu alcance.
+                        </h2>
+                        <p>
+                            Descubre productos seleccionados para
+                            videovigilancia, control de acceso y protección
+                            electrónica.
+                        </p>
+                        <div class="cta-actions">
+                            <a
+                                class="btn btn-outline store-btn"
+                                href="https://tienda.sysitseguridad.com.mx/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Ir a la tienda
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta section" id="contacto">
+                <div class="container">
+                    <div class="section-marker" data-marker>
+                        <span class="marker-num">05</span>
+                        <span class="marker-rule" aria-hidden="true"></span>
+                        <span class="marker-label">Asesoría inmediata</span>
+                    </div>
+
+                    <div class="cta-box reveal">
+                        <h2 data-split>
+                            Eleva la seguridad de tu espacio con un plan
+                            profesional.
+                        </h2>
+                        <p>
+                            Solicita información, asesoría o una cotización
+                            personalizada para tu proyecto.
+                        </p>
+                        <div class="cta-actions">
+                            <a
+                                class="btn btn-primary"
+                                href="https://wa.me/5216643028600?text=Hola%2C%20me%20interesa%20informacion%20sobre%20sus%20servicios%20de%20seguridad."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Escribir por WhatsApp</a
+                            >
+                            <a class="btn btn-outline" href="tel:+5216643028600"
+                                >Llamar ahora</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="footer-wordmark reveal" aria-hidden="true">SysIT</p>
+                <div class="footer-grid">
+                    <div class="reveal">
+                        <h3>SysIT Luna Security</h3>
+                        <p>
+                            Ofrecemos soluciones de seguridad y tecnología para
+                            hogares, negocios y empresas.
+                        </p>
+                    </div>
+                    <div class="reveal">
+                        <h3>Síguenos en redes sociales</h3>
+                        <div class="footer-links">
+                            <a
+                                href="https://www.facebook.com/sysitseguridad"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Facebook</a
+                            >
+                            <a
+                                href="https://www.instagram.com/sysitseguridad/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Instagram</a
+                            >
+                        </div>
+                    </div>
+                    <div class="reveal">
+                        <h3>Contacto directo</h3>
+                        <div class="footer-links">
+                            <a href="tel:+5216643028600">+52 1 664 302 8600</a>
+                            <a
+                                href="https://wa.me/5216643028600"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >WhatsApp</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="copy">© 2026 SysIT. Todos los derechos reservados.</p>
+        </footer>
+
+        <div class="floating-actions" aria-label="Acciones rápidas de contacto">
+            <a
+                class="fab fab-call"
+                href="tel:+5216643028600"
+                aria-label="Llamar a SysIT Luna Security"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M6.62 10.79a15.54 15.54 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.28.57 3.5.57a1 1 0 0 1 1 1v3.49a1 1 0 0 1-1 1A17.91 17.91 0 0 1 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.22.2 2.4.57 3.5a1 1 0 0 1-.24 1l-2.2 2.29Z"
+                    />
+                </svg>
+            </a>
+            <a
+                class="fab fab-wa"
+                href="https://wa.me/5216643028600?text=Hola%2C%20me%20interesa%20informacion%20sobre%20sus%20servicios%20de%20seguridad."
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Enviar mensaje por WhatsApp"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M16.72 14.01c-.27-.14-1.58-.78-1.82-.87-.24-.09-.41-.14-.58.14-.17.27-.67.86-.82 1.03-.15.18-.3.2-.56.07-.27-.14-1.12-.41-2.13-1.31-.79-.7-1.32-1.57-1.47-1.84-.15-.27-.02-.41.11-.54.12-.12.27-.3.41-.44.14-.15.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.58-1.4-.8-1.92-.21-.5-.43-.43-.58-.44h-.5c-.18 0-.47.07-.72.34-.24.27-.94.92-.94 2.24 0 1.32.97 2.6 1.1 2.78.14.18 1.9 2.9 4.61 4.07.64.28 1.14.44 1.53.56.64.2 1.22.17 1.68.1.51-.08 1.58-.65 1.8-1.27.22-.63.22-1.16.15-1.27-.06-.12-.24-.18-.51-.31Zm-4.66 7.49a9.47 9.47 0 0 1-4.83-1.32L2 21.5l1.36-5.03a9.5 9.5 0 1 1 8.7 5.03Zm0-17.06a7.56 7.56 0 0 0-6.48 11.46l.25.4-.8 2.95 3.02-.79.39.23a7.56 7.56 0 1 0 3.62-14.25Z"
+                    />
+                </svg>
+            </a>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+        <script src="script.js?v=20260814-1"></script>
+    </body>
+</html>
