@@ -1,11 +1,17 @@
 {
-    "version": "0.0.1",
-    "configurations": [
-        {
-            "name": "sysit-static",
-            "runtimeExecutable": "python",
-            "runtimeArgs": ["-m", "http.server", "5173"],
-            "port": 5173
-        }
-    ]
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "solvetech",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8990", "--directory", "C:\\Users\\angel\\Downloads\\Paginas Web Actuales\\Rediseñadas\\SolveTech-master"],
+      "port": 8990
+    },
+    {
+      "name": "sysit",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8992", "--directory", "C:\\Users\\angel\\Downloads\\Paginas Web Actuales\\Rediseñadas\\SysITLunaSecurity-main\\SysITLunaSecurity-main"],
+      "port": 8992
+    }
+  ]
 }

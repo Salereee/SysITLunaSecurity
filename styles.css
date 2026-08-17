@@ -2016,3 +2016,12 @@ svg {
         transform: translate3d(-20px, 16px, 0) scale(1.05);
     }
 }
+
+/* ============ ICONOS SVG (sprite inline, sin Font Awesome) ============ */
+.icon-sprite { display: none; }
+.icon {
+    width: 1em;
+    height: 1em;
+    flex: none;
+    vertical-align: -0.125em;
+}
